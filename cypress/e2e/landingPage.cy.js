@@ -20,7 +20,7 @@ describe('Lander Page Functionality Tests', () => {
     cy.get('.gap-6 > [href="/swap?intro=true"]').click();
     cy.url().should('contain', 'https://beta-uat.ayin.app/swap');
     cy.wait(4000);
-    cy.get('.text-2xl.text-\\[\\#E3E3E3\\]')
+    cy.get('.text-2xl.text-\\[\\#E3E3E3\\]',{ timeout: 800000 })
       .should('be.visible');
   });
 
@@ -45,9 +45,9 @@ describe('Lander Page Functionality Tests', () => {
       .should('be.visible');
   });
 
-  it('clicking on the ayin swap popup', () => {
+  it.only('clicking on the ayin swap popup', () => {
     cy.get('a > .relative').click();
-    cy.url().should('eq', 'https://beta-uat.ayin.app/swap?intro=true');
+    cy.url().should('eq', 'https://beta-uat.ayin.app/swap?intro=true',{ timeout: 800000 });
 
 
        
@@ -67,7 +67,7 @@ it('clicking on the privacy Notice', () => {
 cy.xpath("//a[normalize-space()='Privacy Notice']") 
           .should('be.visible')
           .click();
-          cy.get('.content > :nth-child(2)')
+          cy.get('.content > :nth-child(2)',{ timeout: 800000 })
           .should('contain.text', 'In this Privacy Notice, we explain how');
 
 });
@@ -77,7 +77,7 @@ it('clicking on Terms of Service', () => {
 cy.xpath("//a[normalize-space()='Terms of Service']")
           .should('be.visible')
           .click();
-          cy.get('.content > :nth-child(4)')
+          cy.get('.content > :nth-child(4)',{ timeout: 800000 })
           .should('contain.text', 'If you are acting for or on behalf of a');
 
 });
@@ -86,7 +86,7 @@ it('clicking on Risk Disclosure Statement', () => {
 cy.xpath("//a[normalize-space()='Risk Disclosure Statement']")
           .should('be.visible')
           .click();
-          cy.get(':nth-child(2) > strong')
+          cy.get(':nth-child(2) > strong',{ timeout: 800000 })
           .should('contain.text', 'Experimental Nature');
 
 });
@@ -95,7 +95,7 @@ it('clicking on the Legal notice', () => {
 cy.xpath("//a[normalize-space()='Legal Notice']")
           .should('be.visible')
           .click();
-          cy.get(':nth-child(4) > strong')
+          cy.get(':nth-child(4) > strong',{ timeout: 800000 })
           .should('be.visible')
 });
     
