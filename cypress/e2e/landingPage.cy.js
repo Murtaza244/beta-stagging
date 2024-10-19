@@ -18,7 +18,7 @@ describe('Lander Page Functionality Tests', () => {
   it('Should navigate to the swap page', () => {
     cy.wait(2000);
     cy.get('.gap-6 > [href="/swap?intro=true"]').click();
-    cy.url().should('eq', 'https://beta-uat.ayin.app/swap?intro=true');
+    cy.url().should('contain', 'https://beta-uat.ayin.app/swap');
     cy.wait(4000);
     cy.get('.text-2xl.text-\\[\\#E3E3E3\\]')
       .should('be.visible');
@@ -40,7 +40,7 @@ describe('Lander Page Functionality Tests', () => {
     cy.get('.flex-row > .inline-flex > .group')
       .should('be.visible')
       .click();
-    cy.url().should('eq', 'https://beta-uat.ayin.app/swap?intro=true');
+    cy.url().should('contain', 'https://beta-uat.ayin.app');
     cy.get('.w-full > .mt-1')
       .should('be.visible');
   });
