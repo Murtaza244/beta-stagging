@@ -67,19 +67,45 @@ cy.get('[class="text-[8px] sm:text-xs text-[#B2B2B2]"]').click()
 cy.get('.h-full > .w-full.flex > .flex > .inline-flex').click()
 });
 
-it.only('ddd', () => {
+it('Verification of the chart for a specific token pair', () => {
   cy.visit('https://beta-uat.ayin.app/swap');
   cy.get(':nth-child(3) > :nth-child(2) > .inline-flex').click()
   cy.get('.relative.block > .flex').type('TAIL')
     cy.get('li.w-full').click()
   cy.get('svg[data-sentry-element="svg"][data-sentry-component="StatsIcon"]').click()
-
-
-
+  cy.contains('Type').should('be.visible');
+    cy.contains('ALPH').should('be.visible');
+    cy.contains('TAIL').should('be.visible');
+    cy.contains('Price').should('be.visible');
+    cy.contains('Time').should('be.visible');
+    cy.get('svg[data-sentry-element="svg"][data-sentry-component="StatsIcon"]').click()
 });
+it('Token Conversion by typing the first token amount', () => {
+  cy.visit('https://beta-uat.ayin.app/swap');
+  cy.get(':nth-child(3) > :nth-child(2) > .inline-flex').click();
+  cy.get('.relative.block > .flex').type('TAIL');
+  cy.get('li.w-full').click();
+  cy.get('.space-y-1 > :nth-child(1) > :nth-child(2) > .flex').type('1');
+  
+  cy.get('.space-y-1 > :nth-child(3) > :nth-child(2) > .flex').should(($input) => {  // second field will show some number
+    const value = $input.val();
+    expect(value).to.match(/^\d*\.?\d+$/); // Matches either a whole number or a decimal
+  });
+  
+  cy.get('.space-y-3')
+    .should('contain.text', 'Price')
+    .and('contain.text', 'Expected Output')
+    .and('contain.text', 'Price Impact')
+    .and('contain.text', 'Minimal received after slippage');
+    
+});
+it.only('Token Conversion by typing the first token amount', () => {
+  cy.visit('https://beta-uat.ayin.app/swap');
+cy.get("span[class='w-full h-full bg-[#17171A] flex items-center justify-center gap-x-4 rounded-[10px] rounded-tl-none']").should('be.visible')
+    .click()
+    
 
-
-
+  });
 
 
 });
