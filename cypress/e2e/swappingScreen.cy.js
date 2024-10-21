@@ -99,7 +99,7 @@ it('Token Conversion by typing the first token amount', () => {
     .and('contain.text', 'Minimal received after slippage');
     
 });
-it.only('Token Conversion by typing the first token amount', () => {
+it.only('Connect wallet button', () => {
   cy.visit('https://beta-uat.ayin.app/swap');
 cy.get("span[class='w-full h-full bg-[#17171A] flex items-center justify-center gap-x-4 rounded-[10px] rounded-tl-none']").should('be.visible')
     .click()
