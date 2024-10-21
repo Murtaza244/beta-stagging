@@ -10,7 +10,7 @@ describe('Swap screen', () => {
 
     cy.url().should('contain', 'https://beta-uat.ayin.app');
 
-    cy.get('.w-full.gap-y-4 > .justify-between > .inline-flex', { timeout: 800000 })
+    cy.get('.w-full.gap-y-4 > .justify-between > .inline-flex', { timeout: 60000 })
       .click();
 
     cy.get('.grid > :nth-child(2) > .gap-x-2')
@@ -56,30 +56,27 @@ cy.get(token1Selector).should('be.visible');
 cy.get(token2Selector).should('be.visible');
 });
   
+it('Slipage dropdown', () => {
+  cy.visit('https://beta-uat.ayin.app/swap');
+ cy.get('[class="text-[8px] sm:text-xs text-[#B2B2B2]"]').should('be.visible')
+.click()
+cy.get(':nth-child(2) > .space-y-2 > .items-center > .flex').type('8')
+cy.get(':nth-child(3) > .w-full > .items-center > .flex').type('0.9')
+cy.get('svg[data-sentry-element="svg"][data-sentry-component="X"]').click()
+cy.get('[class="text-[8px] sm:text-xs text-[#B2B2B2]"]').click()
+cy.get('.h-full > .w-full.flex > .flex > .inline-flex').click()
+});
+
 it.only('ddd', () => {
   cy.visit('https://beta-uat.ayin.app/swap');
+  cy.get(':nth-child(3) > :nth-child(2) > .inline-flex').click()
+  cy.get('.relative.block > .flex').type('TAIL')
+    cy.get('li.w-full').click()
+  cy.get('svg[data-sentry-element="svg"][data-sentry-component="StatsIcon"]').click()
+
+
 
 });
-  
-  
-  
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

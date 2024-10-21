@@ -1,4 +1,4 @@
-import LoginPage from '../support/LoginPage';  // Import the LoginPage class
+import LoginPage from '../support/Page/LoginPage';  // Import the LoginPage class
 
 describe('Login Functionality Tests', () => {
   const loginPage = new LoginPage(); // Create an instance of LoginPage
@@ -40,7 +40,7 @@ describe('Login Functionality Tests', () => {
       loginPage.getPasswordInput().should('have.value', 'ElvjkVysOLrU');
     });
 
-    it('Should log in successfully with valid password', () => {
+    it.only('Should log in successfully with valid password', () => {
       loginPage.navigate();
       loginPage.enterPassword('ElvjkVysOLrU');
       loginPage.clickLoginButton();
